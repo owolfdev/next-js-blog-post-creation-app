@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Path: styles/datepicker.css */
+.react-datepicker__triangle {
+  left: -220px !important;
+}

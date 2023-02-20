@@ -21,7 +21,7 @@ async function generateBlogPost(data) {
     slug: generateSlug(data.title),
     author: data.author,
     categories: categories,
-    publishedDate: new Date(data.publishedDate).toISOString(),
+    publishedDate: data.publishedDate,
     description: data.description,
     excerpt: excerpt,
     body: data.body,
@@ -71,7 +71,10 @@ function writeBlogPostToFile(data) {
 }
 
 function generateSlug(title) {
-  return title.toLowerCase().replace(/\s+/g, "-");
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .replace(/\s+/g, "-");
 }
 
 const rl = readline.createInterface({
